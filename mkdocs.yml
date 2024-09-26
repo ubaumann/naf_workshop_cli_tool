@@ -2,7 +2,7 @@
 site_name: "NAF Workshop"
 site_description: WS:C4 - Leveraging Python Ecosystem for Quick CLI Tool Creation
 nav:
-  - FAQ: "faq.md"
+  - FAQ: "index.md"
 
 
 repo_url: https://github.com/ubaumann/naf_workshop_cli_tool

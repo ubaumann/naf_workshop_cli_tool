@@ -16,6 +16,7 @@ This workshop is suitable for all levels, from beginners to experts. Familiarity
 ## Pre-Workshop Preparation
 
 ### 3. What do I need to install before the workshop?
+
 - **Python (version 3.10 or above)**
 - **Python venv**: To avoid messing up your local Python setup, you should be able to create a virtual Python environment or work in a dedicated container/VM.
 - **Unix**: It is recommended that you work on a Unix-based operation system like Linux or MacOS.
@@ -24,11 +25,12 @@ This workshop is suitable for all levels, from beginners to experts. Familiarity
 
 ### 4. Are there any pre-reading materials?
 There is no mandatory pre-reading, but it does not harm to familiarize yourself with the official documentation of the libraries we will cover:
-  - [Poetry](https://python-poetry.org/docs/)
-  - [Nornir](https://nornir.readthedocs.io/)
-  - [Pydantic](https://docs.pydantic.dev/)
-  - [Rich](https://rich.readthedocs.io/)
-  - [Typer](https://typer.tiangolo.com/)
+
+- [Poetry](https://python-poetry.org/docs/)
+- [Nornir](https://nornir.readthedocs.io/)
+- [Pydantic](https://docs.pydantic.dev/)
+- [Rich](https://rich.readthedocs.io/)
+- [Typer](https://typer.tiangolo.com/)
 
 ### 5. Do I need to bring any equipment?
 Yes, please bring a laptop with Python and the necessary libraries pre-installed. Ensure that your laptop is configured with the appropriate permissions to install and run software.
@@ -37,6 +39,7 @@ Yes, please bring a laptop with Python and the necessary libraries pre-installed
 Yes. All the labs work well with GitHub Codespaces. Make sure your free quota is not exceeded. 
 
 ---
+
 ## Own Ideas
 
 ### 7. Can I implement my own ideas?
@@ -44,6 +47,7 @@ Definitely, it is appriciated to consider how you can apply the learned material
 
 ### 8. Lab access?
 You can run your own lab on your computer or connect to your lab. The internet is shared to all attendees and therefore graphical transmissions are not recommended.
+
 ---
 
 ## Technical Questions
