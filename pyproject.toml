@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "naf-workshop-cli-tool"
+version = "0.1.0"
+description = "NAF Workshop 19.11.2024"
+authors = ["ubaumann <github@m.ubaumann.ch>"]
+readme = "README.md"
+
+[tool.poetry.group.dev.dependencies]
+mkdocs = "^1.6.0"
+mkdocs-material = {extras = ["imaging"], version = "^9.5.31"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

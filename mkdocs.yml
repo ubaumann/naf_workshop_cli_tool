@@ -1,0 +1,22 @@
+---
+site_name: "NAF Workshop"
+site_description: WS:C4 - Leveraging Python Ecosystem for Quick CLI Tool Creation
+nav:
+  - FAQ: "faq.md"
+
+
+repo_url: https://github.com/ubaumann/naf_workshop_cli_tool
+repo_name: ubaumann/naf_workshop_cli_tool
+
+theme:
+  name: material
+  logo: img/NAF.png
+  favicon: img/favicon.png
+  palette:
+    - scheme: slate
+      primary: custom
+      accent: custom
+  features:
+    - navigation.tracking
+extra_css:
+  - stylesheets/extra.css
