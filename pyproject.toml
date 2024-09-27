@@ -12,6 +12,7 @@ python = "^3.10"
 [tool.poetry.group.dev.dependencies]
 mkdocs = "^1.6.0"
 mkdocs-material = {extras = ["imaging"], version = "^9.5.31"}
+mkdocs-with-pdf = "^0.9.3"
 
 
 [build-system]
