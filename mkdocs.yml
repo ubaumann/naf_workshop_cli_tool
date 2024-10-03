@@ -4,6 +4,24 @@ site_description: Leveraging Python Ecosystem for Quick CLI Tool Creation
 nav:
   - FAQ: "index.md"
   - Agenda: "agenda.md"
+  - Poetry: "poetry.md"
+  - LAB Poetry: "lab_poetry.md"
+  - Nornir: "nornir.md"
+  - LAB Network API: "lab_network_api.md"
+  - rich: rich.md
+  - LAB rich: lab_rich.md
+  - Pydantic: pydantic.md
+  - LAB Pydantic: lab_pydantic.md
+  - Typer: typer.md
+  - CLI App: cli_app.md
+  - Optional:
+    - pipx: "pipx.md"
+    - NAPALM Mock: napalm_mock.md
+    - rich SVG: rich_svg.md
+    - Pydantic: pydantic_plus.md
+    - Testing Typer: testing_typer.md
+    - Publish Package: publish_package.md
+
 
 
 repo_url: https://github.com/ubaumann/naf_workshop_cli_tool
