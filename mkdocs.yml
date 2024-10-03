@@ -3,6 +3,7 @@ site_name: "NAF Workshop WS:C4 - AutoCon2"
 site_description: Leveraging Python Ecosystem for Quick CLI Tool Creation
 nav:
   - FAQ: "index.md"
+  - Agenda: "agenda.md"
 
 
 repo_url: https://github.com/ubaumann/naf_workshop_cli_tool
