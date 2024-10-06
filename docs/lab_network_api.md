@@ -1,5 +1,7 @@
 
 Using Nornir and the plugins to interact with the device APIs.
+If you'd like to work with your own lab setup, feel free to do so. This lab uses a mocked NAPALM driver to minimize resource usage and ensure it runs on any notebook. If you prefer to use NETCONF, you can use the [pytest-netconf](https://pypi.org/project/pytest-netconf/)plugin to help with mocking.
+
 
 Links:
 
