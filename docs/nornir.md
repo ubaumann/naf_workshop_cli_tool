@@ -1,4 +1,6 @@
 
+![nornir drawing](img/nornir_draw.png)
+
 Links:
 
 - [Nornir Docs](https://nornir.readthedocs.io/)
