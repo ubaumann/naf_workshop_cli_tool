@@ -4,11 +4,12 @@ site_description: Leveraging Python Ecosystem for Quick CLI Tool Creation
 nav:
   - FAQ: "index.md"
   - Agenda: "agenda.md"
+  - Use Case: "use_case.md"
   - Poetry: "poetry.md"
   - LAB Poetry: "lab_poetry.md"
   - Nornir: "nornir.md"
   - LAB Network API: "lab_network_api.md"
-  - rich: rich.md
+  - Rich: rich.md
   - LAB rich: lab_rich.md
   - Pydantic: pydantic.md
   - LAB Pydantic: lab_pydantic.md
@@ -78,3 +79,7 @@ plugins:
         # debug_html: true
         #show_anchors: true
         # verbose: true
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
