@@ -22,27 +22,24 @@ Demo - Live Demo of some code on how to deploy L3VPN Services in a network.
 
 Lab - Connect to Network Device to get some info and look up more info on an API.
 
-*Optional:* NAPALM mock device driver and pytest
+*Optional:* How does the NAPALM mock device driver work and can you use it in pytest?
 
- 
 ### 10:30-10:40:
 
 Demo - Live Demo of how rich can provide nice-looking output on the shell.
 
-
-### 10:40-10:50:
-
-Lab – Using Rich
-
-*Optional:* Save rich output as SVG
-
-
-### 10:50-11:05
+### 10:40-11:00
 
 Break - Coffee, a lot of coffee.
 
+### 11:00-11:10:
+
+Lab – Using Rich
+
+*Optional:* Can you save the rich output as SVG?
+
  
-### 11:05-11:30:
+### 11:10-11:30:
 
 Theory - Introduction to Pydantic, benefits of Models
 
