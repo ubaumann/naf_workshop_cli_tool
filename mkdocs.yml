@@ -14,7 +14,7 @@ nav:
   - Pydantic: pydantic.md
   - LAB Pydantic: lab_pydantic.md
   - Typer: typer.md
-  - CLI App: cli_app.md
+  - MTU CLI App: cli_app.md
   - Optional:
     - pipx: "pipx.md"
     - NAPALM Mock: napalm_mock.md

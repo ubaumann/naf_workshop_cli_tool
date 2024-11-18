@@ -11,12 +11,12 @@ Update the existing model to ensure that only valid IPv4 addresses are accepted 
 
     ```python
     from typing import Dict, List, Optional
-
+    from ipaddress import IPv4Address, IPv4Network
     from pydantic import BaseModel
 
 
     class Via(BaseModel):
-        nexthopAddr: Optional[str] = None
+        nexthopAddr: Optional[IPv4Address] = None
         interface: str
 
 
@@ -37,7 +37,7 @@ Update the existing model to ensure that only valid IPv4 addresses are accepted 
         allRoutesProgrammedHardware: bool
         allRoutesProgrammedKernel: bool
         defaultRouteState: str
-        routes: Dict[str, Route]
+        routes: Dict[IPv4Network, Route]
 
 
     class Model(BaseModel):
