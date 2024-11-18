@@ -446,7 +446,7 @@ if __name__ == "__main__":
                                 "mtu": self.local_mtu,
                             }
                         ),
-                        title=f"[{colour}]self.local_name",
+                        title=f"[{colour}]{self.local_name}",
                         style=colour,
                     ),
                     Panel(
@@ -457,7 +457,7 @@ if __name__ == "__main__":
                                 "mtu": self.neighbor_mtu,
                             }
                         ),
-                        title=f"[{colour}]self.neighbor_name",
+                        title=f"[{colour}]{self.neighbor_name}",
                         style=colour,
                     ),
                 ]
