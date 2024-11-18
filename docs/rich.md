@@ -43,3 +43,4 @@ result = nr_with_processors.run(task=random_sleep)
 Links:
 
 - [Rich](https://rich.readthedocs.io/)
+- [Textual TUI](https://textual.textualize.io/)
