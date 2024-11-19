@@ -6,7 +6,7 @@ If you'd like to work with your own lab setup, feel free to do so. This lab uses
 
 The prepared use case utilizes the NAPALM Mock driver to simulate interactions with network devices. For more details and the full use case, refer to the [Use Case](../use_case) chapter.
 
-To get started, clone the repository (TODO: provide link).
+To get started, clone the repository ([https://github.com/ubaumann/mtu_tool](https://github.com/ubaumann/mtu_tool)).
 
 The following elements are already set up:
 
@@ -399,7 +399,7 @@ if __name__ == "__main__":
     from mtu_tool.models.itms import ConnectionItem
     from mtu_tool.models.show_route import Model as RouteModel
 
-    from mtu_tool.exceptions import PathProcedureError
+    from mtu_tool.exceptions import PathProcedureError, NoHostFoundException
 
 
     # Use a cash to interact only once with a device/mock
@@ -473,7 +473,7 @@ if __name__ == "__main__":
 
         nr_host = nr.filter(name=hostname)
         if len(nr_host.inventory) == 0:
-            raise Exception("Host not found in inventory")  # ToDo
+            raise NoHostFoundException(f"Host {hostname} not found in inventory")
 
         path_result = AggregatedResult("path")
 

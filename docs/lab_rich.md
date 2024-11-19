@@ -273,7 +273,7 @@ def print_path(
     console: Console = Console(),
 ) -> None:
 
-    # ToDo
+    # TODO
     # use console.print(...) to print
 
 
