@@ -10,7 +10,7 @@ Rich makes it easy to generate appealing console output, allowing you to format 
 The data to be displayed is a dictionary where the keys are hostnames and the values are lists of `InterfaceItem` objects. The `InterfaceItem` dataclass, located in `mtu_tool.models.itms`, defines the structure for the interface data. If a `min_mtu` value is provided, it should be easy to identify any MTU values that are lower than the specified minimum.
 
 ```python
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from rich.console import Console
 
@@ -19,7 +19,7 @@ from mtu_tool.models.itms import InterfaceItem
 
 def print_interfaces(
     data: Dict["str", List[InterfaceItem]],
-    min_mtu: int = None,
+    min_mtu: Optional[int] = None,
     console: Console = Console(),
 ):
 
@@ -53,7 +53,7 @@ if __name__ == "__main__":
 ??? example "One possible solution"
 
     ```python
-    from typing import Dict, List
+    from typing import Dict, List, Optional
 
     from rich.console import Console
     from rich.panel import Panel
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     from mtu_tool.models.itms import InterfaceItem
 
 
-    def _mtu_rich_str(mtu: int, min_mtu: int = None) -> str:
+    def _mtu_rich_str(mtu: int, min_mtu: Optional[int] = None) -> str:
         if not min_mtu:
             return str(mtu)
         return str(mtu) if mtu >= min_mtu else f"[red]{mtu}[/red]"
@@ -70,9 +70,9 @@ if __name__ == "__main__":
 
     def print_interfaces(
         data: Dict["str", List[InterfaceItem]],
-        min_mtu: int = None,
+        min_mtu: Optional[int] = None,
         console: Console = Console(),
-    ):
+    ) -> None:
         for host, interface_list in data.items():
             table = Table(style="cyan", row_styles=["green"], expand=True)
             table.add_column("Interface Name")
@@ -115,7 +115,7 @@ if __name__ == "__main__":
 Display the connection details for each link between the LLDP neighbors. The `print_neighbors` function accepts a list of `ConnectionItem` objects. It is highly recommended to use a different style than the one used in the previous task for a better learning effect.
 
 ```python
-from typing import List
+from typing import List, Optional
 
 from rich.console import Console
 
@@ -124,9 +124,9 @@ from mtu_tool.models.itms import ConnectionItem
 
 def print_neighbors(
     connections: List[ConnectionItem],
-    min_mtu: int = None,
+    min_mtu: Optional[int] = None,
     console: Console = Console(),
-):
+) -> None:
 
     # TODO
     # use console.print(...) to print
@@ -174,7 +174,7 @@ if __name__ == "__main__":
 ??? example "One possible solution"
 
     ```python
-    from typing import List
+    from typing import List, Optional
 
     from rich.console import Console
     from rich.panel import Panel
@@ -185,9 +185,9 @@ if __name__ == "__main__":
 
     def print_neighbors(
         connections: List[ConnectionItem],
-        min_mtu: int = None,
+        min_mtu: Optional[int] = None,
         console: Console = Console(),
-    ):
+    ) -> None:
         site_table = Table(show_lines=True)
         site_table.add_column("local", vertical="bottom")
         site_table.add_column("remote")
@@ -259,7 +259,7 @@ if __name__ == "__main__":
 The task is to visualize multiple paths, with each path representing hop-by-hop information stored as `ConnectionItem` objects. There are many ways to achieve this, so feel free to get creative. Don't be afraid to experiment with approaches you might not normally consider.
 
 ```python
-from typing import List
+from typing import List, Optional
 
 from rich.console import Console
 
@@ -269,9 +269,9 @@ from mtu_tool.models.itms import ConnectionItem
 def print_path(
     paths: List[List[ConnectionItem]],
     start_name: str,
-    min_mtu: int = None,
+    min_mtu: Optional[int] = None,
     console: Console = Console(),
-):
+) -> None:
 
     # ToDo
     # use console.print(...) to print
@@ -421,6 +421,9 @@ if __name__ == "__main__":
     To simplify the code, the `ConnectionItem` class was extended by the method `__rich__(self)` to support the rich protocoll.
 
     ```python title="mtu_tool/models/itms.py"
+    from typing import Optional
+    from dataclasses import dataclass
+
     from rich.columns import Columns
     from rich.panel import Panel
     from rich.json import JSON
@@ -431,8 +434,8 @@ if __name__ == "__main__":
         local_mtu: int
         neighbor_name: str
         neighbor_interface: str
-        local_name: str = None
-        neighbor_mtu: int = None
+        local_name: Optional[str] = None
+        neighbor_mtu: Optional[int] = None
 
         def __rich__(self) -> Panel:
             colour = "red" if self.local_mtu != self.neighbor_mtu else "green"
@@ -466,7 +469,7 @@ if __name__ == "__main__":
     ``` 
 
     ```python title="mtu_tool/beautify/path.py"
-    from typing import List
+    from typing import List, Optional
 
     from rich.console import Console
     from rich.tree import Tree
@@ -479,10 +482,9 @@ if __name__ == "__main__":
         start_name: str,
         min_mtu: int = None,
         console: Console = Console(),
-    ):
+    ) -> None:
 
         tree = Tree(f":gear: {start_name}")
-        devices = {}
         for path in paths:
             sub_tree = tree
             for step in path:

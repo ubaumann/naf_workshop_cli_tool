@@ -19,10 +19,13 @@ The following elements are already set up:
 All three tasks require a Nornir object. To facilitate this, the `helper.py` file includes a helper function called `init_nornir`.
 
 ```python
+from typing import Optional
+
 from nornir import InitNornir
+from nornir.core import Nornir
 
 
-def init_nornir(configuration_file: str = "config.yaml", password: str = None) -> None:
+def init_nornir(configuration_file: str = "config.yaml", password: Optional[str] = None) -> Nornir:
     """
     Helper function to init the nornir object.
     We could do stuff like setting the default password here
@@ -40,7 +43,7 @@ Implement the `interfaces` function, which takes a Nornir object and an optional
 The function must use the `napalm_get` task from the nornir-napalm plugin to retrieve interface information using the `get_interfaces` getter. The `InterfaceItem` dataclass from `mtu_tool.models.itms` defines the expected structure for the interface data. The function should return a dictionary where the keys are hostnames and the values are lists of `InterfaceItem` objects. Additionally, the function should return the `AggregatedResult` from the Nornir task run.
 
 ```python
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 from nornir.core import Nornir
 from nornir.core.task import AggregatedResult
@@ -51,7 +54,7 @@ from mtu_tool.models.itms import InterfaceItem
 
 def interfaces(
     nr: Nornir,
-    hostname: str = None,
+    hostname: Optional[str] = None,
 ) -> Tuple[Dict["str", List[InterfaceItem]], AggregatedResult]:
     """Collect the mtu for all interfaces"""
 
@@ -92,7 +95,7 @@ if __name__ == "__main__":
 ??? example "One possible solution"
 
     ```python
-    from typing import Dict, List, Tuple
+    from typing import Dict, List, Optional, Tuple
 
     from nornir.core import Nornir
     from nornir.core.task import AggregatedResult
@@ -104,7 +107,7 @@ if __name__ == "__main__":
 
     def interfaces(
         nr: Nornir,
-        hostname: str = None,
+        hostname: Optional[str] = None,
     ) -> Tuple[Dict["str", List[InterfaceItem]], AggregatedResult]:
         """Collect the mtu for all interfaces"""
 
@@ -474,7 +477,7 @@ if __name__ == "__main__":
 
         path_result = AggregatedResult("path")
 
-        path = []  # first path list
+        path: List[ConnectionItem] = []  # first path list
         paths = [path]  # list of all existing paths
 
         def split_path(path):
@@ -499,7 +502,7 @@ if __name__ == "__main__":
 
         def walk_path(
             hostname: str, interface: str, path, aggregated_result: AggregatedResult
-        ) -> None:
+        ) -> int:
 
             nr_host = nr.filter(name=hostname)
 
@@ -529,7 +532,7 @@ if __name__ == "__main__":
                 # walk_path returns the MTU uf the remote and the next hop information added to the list can be updated now
                 nh.neighbor_mtu = remote_mtu
 
-            return interface_mtus[interface]
+            return int(interface_mtus[interface])
 
         # Start recursion
         try:
