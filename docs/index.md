@@ -3,6 +3,20 @@
 
 ---
 
+!!! warning
+
+    At the moment NAPALM does not support Python 3.13 ([PR](https://github.com/napalm-automation/napalm/pull/2137))
+
+    Getting the path to a older Python version
+    ```bash
+    whereis python3.12
+    ```
+
+    Use the older version with Poetry
+    ```bash
+    poetry env use /usr/local/python/3.12.1/bin/python3
+    ```
+
 ## General Information
 
 ### 1. What is this workshop about?

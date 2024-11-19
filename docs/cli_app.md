@@ -12,8 +12,6 @@ Your task is to implement three commands, ensuring that each one matches the fun
 The extend the following code in the `mtu_tool/main.py` file. Feel free to add options like `verbose` output to the commands.
 
 ```python
-import sys
-
 import typer
 from rich.console import Console
 from nornir_rich.functions import print_result

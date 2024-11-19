@@ -25,6 +25,7 @@ def print_interfaces(
 
     # TODO
     # use console.print(...) to print
+    pass
 
 
 if __name__ == "__main__":
@@ -130,6 +131,7 @@ def print_neighbors(
 
     # TODO
     # use console.print(...) to print
+    pass
 
 
 if __name__ == "__main__":
@@ -275,6 +277,7 @@ def print_path(
 
     # TODO
     # use console.print(...) to print
+    pass
 
 
 if __name__ == "__main__":
