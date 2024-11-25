@@ -32,4 +32,10 @@ o avoid the need for setting up a lab with 10 routers, mocked data for the NAPAL
 
 The mocked data was collected with a simple CLI tool built using Nornir, NAPALM, and Typer. 😉
 
+## Code
+
 You can find the code here: [https://github.com/ubaumann/mtu_tool](https://github.com/ubaumann/mtu_tool)
+
+The following graphic illustrates how the various exercises will ultimately come together to form a CLI tool.
+
+![CLI Tool files](img/cli_tool_files.png)
