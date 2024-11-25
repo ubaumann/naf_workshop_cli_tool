@@ -1,0 +1,1100 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Leveraging Python Ecosystem for Quick CLI Tool Creation">
+      
+      
+      
+      
+        <link rel="prev" href="../typer/">
+      
+      
+        <link rel="next" href="../pipx/">
+      
+      
+      <link rel="icon" href="../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>MTU CLI App - NAF Workshop WS:C4 - AutoCon2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mtu_toolmainpy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="NAF Workshop WS:C4 - AutoCon2" class="md-header__button md-logo" aria-label="NAF Workshop WS:C4 - AutoCon2" data-md-component="logo">
+      
+  <img src="../img/NAF.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NAF Workshop WS:C4 - AutoCon2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MTU CLI App
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ubaumann/naf_workshop_cli_tool" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ubaumann/naf_workshop_cli_tool
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="NAF Workshop WS:C4 - AutoCon2" class="md-nav__button md-logo" aria-label="NAF Workshop WS:C4 - AutoCon2" data-md-component="logo">
+      
+  <img src="../img/NAF.png" alt="logo">
+
+    </a>
+    NAF Workshop WS:C4 - AutoCon2
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ubaumann/naf_workshop_cli_tool" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ubaumann/naf_workshop_cli_tool
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agenda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../use_case/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use Case
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../poetry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Poetry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab_poetry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LAB Poetry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nornir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nornir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab_network_api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LAB Network API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rich/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rich
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab_rich/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LAB rich
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pydantic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab_pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LAB Pydantic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Typer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    MTU CLI App
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    MTU CLI App
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mtu_toolmainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      mtu_tool/main.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-m-mtu_tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      python -m mtu_tool
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-executable-when-installing-the-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add executable when installing the package
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Optional
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            Optional
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pipx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../napalm_mock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NAPALM Mock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rich_svg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rich SVG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pydantic_plus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pydantic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing_typer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Typer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publish_package/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Publish Package
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mtu_toolmainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      mtu_tool/main.py
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-m-mtu_tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      python -m mtu_tool
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-executable-when-installing-the-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add executable when installing the package
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>MTU CLI App</h1>
+
+<p>In this exercise, you'll create a command-line interface (CLI) tool using Typer to display MTU values. The tool will build upon the work you've done in previous tasks with Nornir and Rich.</p>
+<p>Your task is to implement three commands, ensuring that each one matches the functionality from the Nornir and Rich exercises:</p>
+<ul>
+<li>interfaces: Retrieve and display MTU values for network interfaces.</li>
+<li>neighbors: Show the MTU values of interfaces along with their LLDP neighbors.</li>
+<li>path: Recursively display MTU values for network paths to a specified destination.</li>
+</ul>
+<h2 id="mtu_toolmainpy"><code>mtu_tool/main.py</code></h2>
+<p>The extend the following code in the <code>mtu_tool/main.py</code> file. Feel free to add options like <code>verbose</code> output to the commands.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">typer</span>
+<span class="kn">from</span> <span class="nn">rich.console</span> <span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span> <span class="nn">nornir_rich.functions</span> <span class="kn">import</span> <span class="n">print_result</span>
+
+<span class="kn">from</span> <span class="nn">mtu_tool.helpers</span> <span class="kn">import</span> <span class="n">init_nornir</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.procedure.interfaces</span> <span class="kn">import</span> <span class="n">interfaces</span> <span class="k">as</span> <span class="n">interfaces_procedure</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.procedure.neighbors</span> <span class="kn">import</span> <span class="n">neighbors</span> <span class="k">as</span> <span class="n">neighbors_procedure</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.procedure.path</span> <span class="kn">import</span> <span class="n">path</span> <span class="k">as</span> <span class="n">path_procedure</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.beautify.interfaces</span> <span class="kn">import</span> <span class="n">print_interfaces</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.beautify.neighbors</span> <span class="kn">import</span> <span class="n">print_neighbors</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.beautify.path</span> <span class="kn">import</span> <span class="n">print_path</span>
+
+
+<span class="c1"># https://ascii.today/ to create ASCII art</span>
+<span class="n">HELP_TEXT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Simple [bright_green]MTU[/] CLI tool  :hammer:</span>
+
+<span class="s2">[bright_cyan]</span>
+<span class="s2"> _   .-&#39;)     .-&#39;) _               </span>
+<span class="s2">( &#39;.( OO )_  (  OO) )              </span>
+<span class="s2"> ,--.   ,--.)/     &#39;._ ,--. ,--.   </span>
+<span class="s2"> |   `.&#39;   | |&#39;--...__)|  | |  |   </span>
+<span class="s2"> |         | &#39;--.  .--&#39;|  | | .-&#39;) </span>
+<span class="s2"> |  |&#39;.&#39;|  |    |  |   |  |_|( OO )</span>
+<span class="s2"> |  |   |  |    |  |   |  | | `-&#39; /</span>
+<span class="s2"> |  |   |  |    |  |  (&#39;  &#39;-&#39;(_.-&#39; </span>
+<span class="s2"> `--&#39;   `--&#39;    `--&#39;    `-----&#39;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Typer</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="n">HELP_TEXT</span><span class="p">,</span> <span class="n">rich_markup_mode</span><span class="o">=</span><span class="s2">&quot;rich&quot;</span><span class="p">)</span>
+<span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
+<span class="n">console_error</span> <span class="o">=</span> <span class="n">Console</span><span class="p">(</span><span class="n">stderr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">setup_nornir</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">typer</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span>
+    <span class="n">configuration_file</span><span class="p">:</span> <span class="n">typer</span><span class="o">.</span><span class="n">FileText</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span>
+        <span class="s2">&quot;config.yaml&quot;</span><span class="p">,</span>
+        <span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">file_okay</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">dir_okay</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">readable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">resolve_path</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;NORNIR_SETTINGS&quot;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to the nornir configuration file.&quot;</span><span class="p">,</span>
+        <span class="n">envvar</span><span class="o">=</span><span class="s2">&quot;NORNIR_SETTINGS&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get nornir object from configuration file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">init_nornir</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">configuration_file</span><span class="p">))</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">interfaces</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">typer</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span>
+
+    <span class="c1"># TODO</span>
+
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Show MTU values for all interfaces.&quot;&quot;&quot;</span>
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">obj</span>
+
+    <span class="c1"># TODO</span>
+
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">neighbors</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">typer</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span>
+
+    <span class="c1"># TODO</span>
+
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Display the MTU values for all interfaces along with their corresponding neighbors.&quot;&quot;&quot;</span>
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">obj</span>
+
+    <span class="c1"># TODO</span>
+
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">path</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">typer</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span>
+
+    <span class="c1"># TODO</span>
+
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Recursively print the MTU of all interfaces for all paths from the specified device to the specified destination.&quot;&quot;&quot;</span>
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">obj</span>
+
+    <span class="c1"># TODO</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span><span class="p">()</span>
+</code></pre></div>
+<details class="example">
+<summary>One possible solution</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">ipaddress</span> <span class="kn">import</span> <span class="n">IPv4Interface</span><span class="p">,</span> <span class="n">NetmaskValueError</span>
+
+<span class="kn">import</span> <span class="nn">typer</span>
+<span class="kn">from</span> <span class="nn">rich.console</span> <span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span> <span class="nn">nornir_rich.functions</span> <span class="kn">import</span> <span class="n">print_result</span>
+
+<span class="kn">from</span> <span class="nn">mtu_tool.helpers</span> <span class="kn">import</span> <span class="n">init_nornir</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.exceptions</span> <span class="kn">import</span> <span class="n">NoHostFoundException</span><span class="p">,</span> <span class="n">PathProcedureError</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.procedure.interfaces</span> <span class="kn">import</span> <span class="n">interfaces</span> <span class="k">as</span> <span class="n">interfaces_procedure</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.procedure.neighbors</span> <span class="kn">import</span> <span class="n">neighbors</span> <span class="k">as</span> <span class="n">neighbors_procedure</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.procedure.path</span> <span class="kn">import</span> <span class="n">path</span> <span class="k">as</span> <span class="n">path_procedure</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.beautify.interfaces</span> <span class="kn">import</span> <span class="n">print_interfaces</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.beautify.neighbors</span> <span class="kn">import</span> <span class="n">print_neighbors</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.beautify.path</span> <span class="kn">import</span> <span class="n">print_path</span>
+
+
+<span class="c1"># https://ascii.today/ to create ASCII art</span>
+<span class="n">HELP_TEXT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Simple [bright_green]MTU[/] CLI tool  :hammer:</span>
+
+<span class="s2">[bright_cyan]</span>
+<span class="s2">_   .-&#39;)     .-&#39;) _               </span>
+<span class="s2">( &#39;.( OO )_  (  OO) )              </span>
+<span class="s2">,--.   ,--.)/     &#39;._ ,--. ,--.   </span>
+<span class="s2">|   `.&#39;   | |&#39;--...__)|  | |  |   </span>
+<span class="s2">|         | &#39;--.  .--&#39;|  | | .-&#39;) </span>
+<span class="s2">|  |&#39;.&#39;|  |    |  |   |  |_|( OO )</span>
+<span class="s2">|  |   |  |    |  |   |  | | `-&#39; /</span>
+<span class="s2">|  |   |  |    |  |  (&#39;  &#39;-&#39;(_.-&#39; </span>
+<span class="s2">`--&#39;   `--&#39;    `--&#39;    `-----&#39;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Typer</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="n">HELP_TEXT</span><span class="p">,</span> <span class="n">rich_markup_mode</span><span class="o">=</span><span class="s2">&quot;rich&quot;</span><span class="p">)</span>
+<span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
+<span class="n">console_error</span> <span class="o">=</span> <span class="n">Console</span><span class="p">(</span><span class="n">stderr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">setup_nornir</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">typer</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span>
+    <span class="n">configuration_file</span><span class="p">:</span> <span class="n">typer</span><span class="o">.</span><span class="n">FileText</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span>
+        <span class="s2">&quot;config.yaml&quot;</span><span class="p">,</span>
+        <span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">file_okay</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">dir_okay</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">readable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">resolve_path</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;NORNIR_SETTINGS&quot;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to the nornir configuration file.&quot;</span><span class="p">,</span>
+        <span class="n">envvar</span><span class="o">=</span><span class="s2">&quot;NORNIR_SETTINGS&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get nornir object from configuration file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">init_nornir</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">configuration_file</span><span class="p">))</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">interfaces</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">typer</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span>
+    <span class="n">hostname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Choose a device by its hostname.&quot;</span><span class="p">),</span>
+    <span class="n">min_mtu</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span>
+        <span class="kc">None</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Highlight in [red]red[/] all MTU values smaller than the specified minimum.&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span>
+        <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span> <span class="s2">&quot;-v&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Display detailed output showing Nornir results.&quot;</span>
+    <span class="p">),</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Show MTU values for all interfaces.&quot;&quot;&quot;</span>
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">obj</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">interfaces_procedure</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="n">hostname</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">NoHostFoundException</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="n">console_error</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="n">print_interfaces</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">min_mtu</span><span class="p">,</span> <span class="n">console</span><span class="o">=</span><span class="n">console</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">neighbors</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">typer</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span>
+    <span class="n">hostname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">min_mtu</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span>
+        <span class="kc">None</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Highlight in [red]red[/] all MTU values smaller than the specified minimum.&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span>
+        <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span> <span class="s2">&quot;-v&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Display detailed output showing Nornir results.&quot;</span>
+    <span class="p">),</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Display the MTU values for all interfaces along with their corresponding neighbors.&quot;&quot;&quot;</span>
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">obj</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">connections</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">neighbors_procedure</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="n">hostname</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">NoHostFoundException</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="n">console_error</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="n">print_neighbors</span><span class="p">(</span><span class="n">connections</span><span class="p">,</span> <span class="n">min_mtu</span><span class="p">,</span> <span class="n">console</span><span class="o">=</span><span class="n">console</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">path</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">typer</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span>
+    <span class="n">hostname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Argument</span><span class="p">(</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Please provide the hostname of the starting device from which you would like to retrieve the MTU path.&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">destination</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Argument</span><span class="p">(</span>
+        <span class="o">...</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Provide the destination IPv4 Address. E.g.: 10.0.0.10/32&quot;</span>
+    <span class="p">),</span>
+    <span class="n">min_mtu</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span>
+        <span class="kc">None</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Highlight in [red]red[/] all MTU values smaller than the specified minimum.&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span>
+        <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;-v&quot;</span><span class="p">,</span>
+        <span class="n">count</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Multiple verbose levels can be enabled to increase the verbosity of the output when running Nornir by utilizing the corresponding option.&quot;</span><span class="p">,</span>
+        <span class="n">show_default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Recursively print the MTU of all interfaces for all paths from the specified device to the specified destination.&quot;&quot;&quot;</span>
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">obj</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">paths</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">path_procedure</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="n">hostname</span><span class="p">,</span> <span class="n">IPv4Interface</span><span class="p">(</span><span class="n">destination</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">PathProcedureError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="n">print_result</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">aggregated_result</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">exc</span>
+    <span class="k">except</span> <span class="n">NetmaskValueError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="n">console_error</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Provided destination </span><span class="si">{</span><span class="n">destination</span><span class="si">}</span><span class="s2"> is not a valid IPv4Interface. Error message: </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="k">raise</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="n">level</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="mi">4</span> <span class="o">-</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">verbose</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+        <span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">severity_level</span><span class="o">=</span><span class="n">level</span><span class="p">)</span>
+
+    <span class="n">print_path</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">hostname</span><span class="p">,</span> <span class="n">min_mtu</span><span class="p">,</span> <span class="n">console</span><span class="o">=</span><span class="n">console</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span><span class="p">()</span>
+</code></pre></div>
+</details>
+<h2 id="python-m-mtu_tool"><code>python -m mtu_tool</code></h2>
+<p>Create a <code>__main__.py</code> file to enable the tool to be run as a Python module. After adding this file, the following command should work: <code>python -m mtu_tool --help</code>.</p>
+<details class="example">
+<summary>One possible solution</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">mtu_tool.main</span> <span class="kn">import</span> <span class="n">app</span>
+
+<span class="n">app</span><span class="p">()</span>
+</code></pre></div>
+</details>
+<h2 id="add-executable-when-installing-the-package">Add executable when installing the package</h2>
+<p>Update the <code>pyproject.toml</code> to configure the package for automatic creation of the executable upon installation. <a href="https://python-poetry.org/docs/pyproject/#scripts">Poetry Docs</a></p>
+<details class="example">
+<summary>One possible solution</summary>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">poetry</span><span class="o">.</span><span class="n">scripts</span><span class="p">]</span>
+<span class="n">mtu</span><span class="o">-</span><span class="n">tool</span> <span class="o">=</span> <span class="s1">&#39;mtu_tool.main:app&#39;</span>
+</code></pre></div>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1441 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Leveraging Python Ecosystem for Quick CLI Tool Creation">
+      
+      
+      
+      
+        <link rel="prev" href="../nornir/">
+      
+      
+        <link rel="next" href="../rich/">
+      
+      
+      <link rel="icon" href="../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>LAB Network API - NAF Workshop WS:C4 - AutoCon2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prerequisites" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="NAF Workshop WS:C4 - AutoCon2" class="md-header__button md-logo" aria-label="NAF Workshop WS:C4 - AutoCon2" data-md-component="logo">
+      
+  <img src="../img/NAF.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NAF Workshop WS:C4 - AutoCon2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              LAB Network API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ubaumann/naf_workshop_cli_tool" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ubaumann/naf_workshop_cli_tool
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="NAF Workshop WS:C4 - AutoCon2" class="md-nav__button md-logo" aria-label="NAF Workshop WS:C4 - AutoCon2" data-md-component="logo">
+      
+  <img src="../img/NAF.png" alt="logo">
+
+    </a>
+    NAF Workshop WS:C4 - AutoCon2
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ubaumann/naf_workshop_cli_tool" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ubaumann/naf_workshop_cli_tool
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agenda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../use_case/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use Case
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../poetry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Poetry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab_poetry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LAB Poetry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nornir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nornir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    LAB Network API
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    LAB Network API
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-mtu_toolprocedureinterfacespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interfaces mtu_tool/procedure/interfaces.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neighbors-mtu_toolprocedureneighborspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neighbors mtu_tool/procedure/neighbors.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-mtu_toolprocedurepathpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path mtu_tool/procedure/path.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Links:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rich/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rich
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab_rich/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LAB rich
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pydantic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab_pydantic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LAB Pydantic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Typer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli_app/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MTU CLI App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Optional
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            Optional
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pipx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../napalm_mock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NAPALM Mock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rich_svg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rich SVG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pydantic_plus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pydantic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing_typer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Typer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publish_package/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Publish Package
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-mtu_toolprocedureinterfacespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interfaces mtu_tool/procedure/interfaces.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neighbors-mtu_toolprocedureneighborspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neighbors mtu_tool/procedure/neighbors.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-mtu_toolprocedurepathpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path mtu_tool/procedure/path.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Links:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>LAB Network API</h1>
+
+<p>Using Nornir and the plugins to interact with the device APIs.
+If you'd like to work with your own lab setup, feel free to do so. This lab uses a mocked NAPALM driver to minimize resource usage and ensure it runs on any notebook.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>The prepared use case utilizes the NAPALM Mock driver to simulate interactions with network devices. For more details and the full use case, refer to the <a href="../use_case">Use Case</a> chapter.</p>
+<p>To get started, clone the repository (<a href="https://github.com/ubaumann/mtu_tool">https://github.com/ubaumann/mtu_tool</a>).</p>
+<p>The following elements are already set up:</p>
+<ul>
+<li>Mocked data for the NAPALM driver</li>
+<li>A simple inventory</li>
+<li>Project setup with Poetry</li>
+</ul>
+<h2 id="procedures">Procedures</h2>
+<p>All three tasks require a Nornir object. To facilitate this, the <code>helper.py</code> file includes a helper function called <code>init_nornir</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">nornir</span> <span class="kn">import</span> <span class="n">InitNornir</span>
+<span class="kn">from</span> <span class="nn">nornir.core</span> <span class="kn">import</span> <span class="n">Nornir</span>
+
+
+<span class="k">def</span> <span class="nf">init_nornir</span><span class="p">(</span><span class="n">configuration_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;config.yaml&quot;</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Nornir</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper function to init the nornir object.</span>
+<span class="sd">    We could do stuff like setting the default password here</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">InitNornir</span><span class="p">(</span><span class="n">config_file</span><span class="o">=</span><span class="n">configuration_file</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">password</span><span class="p">:</span>
+        <span class="n">nr</span><span class="o">.</span><span class="n">inventory</span><span class="o">.</span><span class="n">defaults</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">password</span>
+    <span class="k">return</span> <span class="n">nr</span>
+</code></pre></div>
+<h3 id="interfaces-mtu_toolprocedureinterfacespy">Interfaces <code>mtu_tool/procedure/interfaces.py</code></h3>
+<p>Implement the <code>interfaces</code> function, which takes a Nornir object and an optional <code>hostname</code>. If a <code>hostname</code> is provided, the Nornir inventory should be filtered to include only the specified host.</p>
+<p>The function must use the <code>napalm_get</code> task from the nornir-napalm plugin to retrieve interface information using the <code>get_interfaces</code> getter. The <code>InterfaceItem</code> dataclass from <code>mtu_tool.models.itms</code> defines the expected structure for the interface data. The function should return a dictionary where the keys are hostnames and the values are lists of <code>InterfaceItem</code> objects. Additionally, the function should return the <code>AggregatedResult</code> from the Nornir task run.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span> <span class="nn">nornir.core</span> <span class="kn">import</span> <span class="n">Nornir</span>
+<span class="kn">from</span> <span class="nn">nornir.core.task</span> <span class="kn">import</span> <span class="n">AggregatedResult</span>
+<span class="kn">from</span> <span class="nn">nornir_napalm.plugins.tasks</span> <span class="kn">import</span> <span class="n">napalm_get</span>
+
+<span class="kn">from</span> <span class="nn">mtu_tool.models.itms</span> <span class="kn">import</span> <span class="n">InterfaceItem</span>
+
+
+<span class="k">def</span> <span class="nf">interfaces</span><span class="p">(</span>
+    <span class="n">nr</span><span class="p">:</span> <span class="n">Nornir</span><span class="p">,</span>
+    <span class="n">hostname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">InterfaceItem</span><span class="p">]],</span> <span class="n">AggregatedResult</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Collect the mtu for all interfaces&quot;&quot;&quot;</span>
+
+    <span class="c1"># TODO</span>
+
+    <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">result</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">nornir_rich.functions</span> <span class="kn">import</span> <span class="n">print_result</span>
+    <span class="kn">from</span> <span class="nn">mtu_tool.helpers</span> <span class="kn">import</span> <span class="n">init_nornir</span>
+
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">init_nornir</span><span class="p">()</span>
+
+    <span class="n">data</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">interfaces</span><span class="p">(</span><span class="n">nr</span><span class="p">)</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">host</span><span class="p">,</span> <span class="n">int_data</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">int_data</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">mtu</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    mtu-tool-py3.10ins@ubuntu-L:~/mtu_tool$ python mtu_tool/procedure/interfaces.py</span>
+<span class="sd">    r01: Ethernet2       1500</span>
+<span class="sd">    r01: Ethernet1       1500</span>
+<span class="sd">    r01: Management0     1500</span>
+<span class="sd">    r01: Loopback0       65535</span>
+<span class="sd">    r02: Ethernet2       1500</span>
+<span class="sd">    r02: Ethernet4       1500</span>
+<span class="sd">    r02: Ethernet1       1500</span>
+<span class="sd">    r02: Ethernet3       1500</span>
+<span class="sd">    r02: Ethernet5       1500</span>
+<span class="sd">    r02: Management0     1500</span>
+<span class="sd">    r02: Loopback0       65535</span>
+<span class="sd">    ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+<details class="example">
+<summary>One possible solution</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span> <span class="nn">nornir.core</span> <span class="kn">import</span> <span class="n">Nornir</span>
+<span class="kn">from</span> <span class="nn">nornir.core.task</span> <span class="kn">import</span> <span class="n">AggregatedResult</span>
+<span class="kn">from</span> <span class="nn">nornir_napalm.plugins.tasks</span> <span class="kn">import</span> <span class="n">napalm_get</span>
+
+<span class="kn">from</span> <span class="nn">mtu_tool.exceptions</span> <span class="kn">import</span> <span class="n">NoHostFoundException</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.models.itms</span> <span class="kn">import</span> <span class="n">InterfaceItem</span>
+
+
+<span class="k">def</span> <span class="nf">interfaces</span><span class="p">(</span>
+    <span class="n">nr</span><span class="p">:</span> <span class="n">Nornir</span><span class="p">,</span>
+    <span class="n">hostname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">InterfaceItem</span><span class="p">]],</span> <span class="n">AggregatedResult</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Collect the mtu for all interfaces&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">hostname</span><span class="p">:</span>
+        <span class="n">nr</span> <span class="o">=</span> <span class="n">nr</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">hostname</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nr</span><span class="o">.</span><span class="n">inventory</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NoHostFoundException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Host </span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s2"> not found in inventory&quot;</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">nr</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">task</span><span class="o">=</span><span class="n">napalm_get</span><span class="p">,</span>
+        <span class="n">getters</span><span class="o">=</span><span class="p">[</span>
+            <span class="s2">&quot;get_interfaces&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">host</span><span class="p">,</span> <span class="n">mulit_result</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">data_interface</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">interfaces</span> <span class="o">=</span> <span class="n">mulit_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;get_interfaces&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="k">for</span> <span class="n">int_name</span><span class="p">,</span> <span class="n">int_data</span> <span class="ow">in</span> <span class="n">interfaces</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">data_interface</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">InterfaceItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">int_name</span><span class="p">,</span> <span class="n">mtu</span><span class="o">=</span><span class="n">int_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mtu&quot;</span><span class="p">)))</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">host</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_interface</span>
+
+    <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">result</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">nornir_rich.functions</span> <span class="kn">import</span> <span class="n">print_result</span>
+    <span class="kn">from</span> <span class="nn">mtu_tool.helpers</span> <span class="kn">import</span> <span class="n">init_nornir</span>
+
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">init_nornir</span><span class="p">()</span>
+
+    <span class="n">data</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">interfaces</span><span class="p">(</span><span class="n">nr</span><span class="p">)</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">host</span><span class="p">,</span> <span class="n">int_data</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">int_data</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">mtu</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    mtu-tool-py3.10ins@ubuntu-L:~/mtu_tool$ python mtu_tool/procedure/interfaces.py</span>
+<span class="sd">    r01: Ethernet2       1500</span>
+<span class="sd">    r01: Ethernet1       1500</span>
+<span class="sd">    r01: Management0     1500</span>
+<span class="sd">    r01: Loopback0       65535</span>
+<span class="sd">    r02: Ethernet2       1500</span>
+<span class="sd">    r02: Ethernet4       1500</span>
+<span class="sd">    r02: Ethernet1       1500</span>
+<span class="sd">    r02: Ethernet3       1500</span>
+<span class="sd">    r02: Ethernet5       1500</span>
+<span class="sd">    r02: Management0     1500</span>
+<span class="sd">    r02: Loopback0       65535</span>
+<span class="sd">    ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+</details>
+<h3 id="neighbors-mtu_toolprocedureneighborspy">Neighbors <code>mtu_tool/procedure/neighbors.py</code></h3>
+<p>Implement the <code>neighbors</code> function. The function takes similar arguments as before, but now the <code>hostname</code> is required. The objective is to retrieve all LLDP neighbors from the specified device and return connection details for each link between the device and its neighbors. To achieve this, the function will need to execute <code>nornir.run</code> twice.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span> <span class="nn">nornir.core</span> <span class="kn">import</span> <span class="n">Nornir</span>
+<span class="kn">from</span> <span class="nn">nornir.core.task</span> <span class="kn">import</span> <span class="n">AggregatedResult</span>
+<span class="kn">from</span> <span class="nn">nornir.core.filter</span> <span class="kn">import</span> <span class="n">F</span>
+<span class="kn">from</span> <span class="nn">nornir_napalm.plugins.tasks</span> <span class="kn">import</span> <span class="n">napalm_get</span>
+
+<span class="kn">from</span> <span class="nn">mtu_tool.models.itms</span> <span class="kn">import</span> <span class="n">ConnectionItem</span>
+
+
+<span class="k">def</span> <span class="nf">neighbors</span><span class="p">(</span>
+    <span class="n">nr</span><span class="p">:</span> <span class="n">Nornir</span><span class="p">,</span>
+    <span class="n">hostname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ConnectionItem</span><span class="p">],</span> <span class="n">AggregatedResult</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Collect the mtu for all local and neighbor interfaces&quot;&quot;&quot;</span>
+
+    <span class="c1"># TODO</span>
+
+    <span class="k">return</span> <span class="n">connections</span><span class="p">,</span> <span class="n">result_interfaces</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">nornir_rich.functions</span> <span class="kn">import</span> <span class="n">print_result</span>
+    <span class="kn">from</span> <span class="nn">mtu_tool.helpers</span> <span class="kn">import</span> <span class="n">init_nornir</span>
+
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">init_nornir</span><span class="p">()</span>
+
+    <span class="n">connections</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">neighbors</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="n">hostname</span><span class="o">=</span><span class="s2">&quot;r06&quot;</span><span class="p">)</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">connections</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">local_interface</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">local_mtu</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">neighbor_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">neighbor_interface</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">neighbor_mtu</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    mtu-tool-py3.10ins@ubuntu-L:~/mtu_tool$ python mtu_tool/procedure/neighbors.py</span>
+<span class="sd">    Ethernet1 1500 - r04 Ethernet5 1500</span>
+<span class="sd">    Ethernet2 1500 - r08 Ethernet1 1500</span>
+<span class="sd">    Ethernet3 1500 - r09 Ethernet1 1500</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+<details class="tip">
+<summary>Tip</summary>
+<ul>
+<li>Use the <code>napalm_get</code> task with the <code>get_lldp_neighbors</code> getter to retrieve all LLDP neighbors.</li>
+<li>Compile a list of all neighbor names, including the provided <code>hostname</code>.</li>
+<li>Use Nornir's <code>F</code> function to filter the inventory, selecting only the hosts whose names match the neighbors or the <code>hostname</code> (<code>F(name__any=...)</code>).</li>
+<li>Collect <code>get_interfaces</code> data for all the filtered hosts.</li>
+<li>For each LLDP neighbor, create a ConnectionItem using the relevant data from the <code>get_interfaces</code> results, and add it to a list.</li>
+</ul>
+</details>
+<details class="example">
+<summary>One possible solution</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span> <span class="nn">nornir.core</span> <span class="kn">import</span> <span class="n">Nornir</span>
+<span class="kn">from</span> <span class="nn">nornir.core.task</span> <span class="kn">import</span> <span class="n">AggregatedResult</span>
+<span class="kn">from</span> <span class="nn">nornir.core.filter</span> <span class="kn">import</span> <span class="n">F</span>
+<span class="kn">from</span> <span class="nn">nornir_napalm.plugins.tasks</span> <span class="kn">import</span> <span class="n">napalm_get</span>
+
+<span class="kn">from</span> <span class="nn">mtu_tool.exceptions</span> <span class="kn">import</span> <span class="n">NoHostFoundException</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.models.itms</span> <span class="kn">import</span> <span class="n">ConnectionItem</span>
+
+
+<span class="k">def</span> <span class="nf">neighbors</span><span class="p">(</span>
+    <span class="n">nr</span><span class="p">:</span> <span class="n">Nornir</span><span class="p">,</span>
+    <span class="n">hostname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ConnectionItem</span><span class="p">],</span> <span class="n">AggregatedResult</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Collect the mtu for all local and neighbor interfaces&quot;&quot;&quot;</span>
+
+    <span class="n">nr_host</span> <span class="o">=</span> <span class="n">nr</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">hostname</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nr_host</span><span class="o">.</span><span class="n">inventory</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">NoHostFoundException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Host </span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s2"> not found in inventory&quot;</span><span class="p">)</span>
+
+    <span class="n">result_lldp</span> <span class="o">=</span> <span class="n">nr_host</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">task</span><span class="o">=</span><span class="n">napalm_get</span><span class="p">,</span>
+        <span class="n">getters</span><span class="o">=</span><span class="p">[</span>
+            <span class="s2">&quot;get_lldp_neighbors&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">hosts</span> <span class="o">=</span> <span class="p">[</span><span class="n">hostname</span><span class="p">]</span>
+    <span class="n">get_lldp_neighbors</span> <span class="o">=</span> <span class="n">result_lldp</span><span class="p">[</span><span class="n">hostname</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;get_lldp_neighbors&quot;</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="k">for</span> <span class="n">lldp_data</span> <span class="ow">in</span> <span class="n">get_lldp_neighbors</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">lldp_neighbor</span> <span class="ow">in</span> <span class="n">lldp_data</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">lldp_neighbor</span><span class="p">[</span><span class="s2">&quot;hostname&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">hosts</span><span class="p">:</span>
+                <span class="n">hosts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="n">result_interfaces</span> <span class="o">=</span> <span class="n">nr</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">name__any</span><span class="o">=</span><span class="n">hosts</span><span class="p">))</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">task</span><span class="o">=</span><span class="n">napalm_get</span><span class="p">,</span>
+        <span class="n">getters</span><span class="o">=</span><span class="p">[</span>
+            <span class="s2">&quot;get_interfaces&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="n">get_interfaces_local</span> <span class="o">=</span> <span class="n">result_interfaces</span><span class="p">[</span><span class="n">hostname</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="s2">&quot;get_interfaces&quot;</span><span class="p">,</span> <span class="p">{}</span>
+    <span class="p">)</span>
+
+    <span class="n">connections</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">local_interface</span><span class="p">,</span> <span class="n">lldp_data</span> <span class="ow">in</span> <span class="n">get_lldp_neighbors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">local_mtu</span> <span class="o">=</span> <span class="n">get_interfaces_local</span><span class="p">[</span><span class="n">local_interface</span><span class="p">][</span><span class="s2">&quot;mtu&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">lldp_neighbor</span> <span class="ow">in</span> <span class="n">lldp_data</span><span class="p">:</span>
+            <span class="n">neighbor_name</span> <span class="o">=</span> <span class="n">lldp_neighbor</span><span class="p">[</span><span class="s2">&quot;hostname&quot;</span><span class="p">]</span>
+            <span class="n">neighbor_interface</span> <span class="o">=</span> <span class="n">lldp_neighbor</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">]</span>
+            <span class="n">neighbor_mtu</span> <span class="o">=</span> <span class="n">result_interfaces</span><span class="p">[</span><span class="n">neighbor_name</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="s2">&quot;get_interfaces&quot;</span><span class="p">,</span> <span class="p">{}</span>
+            <span class="p">)[</span><span class="n">neighbor_interface</span><span class="p">][</span><span class="s2">&quot;mtu&quot;</span><span class="p">]</span>
+
+            <span class="n">connections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">ConnectionItem</span><span class="p">(</span>
+                    <span class="n">local_name</span><span class="o">=</span><span class="n">hostname</span><span class="p">,</span>
+                    <span class="n">local_interface</span><span class="o">=</span><span class="n">local_interface</span><span class="p">,</span>
+                    <span class="n">local_mtu</span><span class="o">=</span><span class="n">local_mtu</span><span class="p">,</span>
+                    <span class="n">neighbor_name</span><span class="o">=</span><span class="n">neighbor_name</span><span class="p">,</span>
+                    <span class="n">neighbor_interface</span><span class="o">=</span><span class="n">neighbor_interface</span><span class="p">,</span>
+                    <span class="n">neighbor_mtu</span><span class="o">=</span><span class="n">neighbor_mtu</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">connections</span><span class="p">,</span> <span class="n">result_interfaces</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">nornir_rich.functions</span> <span class="kn">import</span> <span class="n">print_result</span>
+    <span class="kn">from</span> <span class="nn">mtu_tool.helpers</span> <span class="kn">import</span> <span class="n">init_nornir</span>
+
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">init_nornir</span><span class="p">()</span>
+
+    <span class="n">connections</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">neighbors</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="n">hostname</span><span class="o">=</span><span class="s2">&quot;r06&quot;</span><span class="p">)</span>
+    <span class="n">print_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">connections</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">local_interface</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">local_mtu</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">neighbor_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">neighbor_interface</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">neighbor_mtu</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    mtu-tool-py3.10ins@ubuntu-L:~/mtu_tool$ python mtu_tool/procedure/neighbors.py</span>
+<span class="sd">    Ethernet1 1500 - r04 Ethernet5 1500</span>
+<span class="sd">    Ethernet2 1500 - r08 Ethernet1 1500</span>
+<span class="sd">    Ethernet3 1500 - r09 Ethernet1 1500</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+</details>
+<h3 id="path-mtu_toolprocedurepathpy">Path <code>mtu_tool/procedure/path.py</code></h3>
+<p>Congratulations on reaching this point! The following procedure is definitely challenging and can be time-consuming. For educational purposes, the goal is to recursively find all possible paths from a given network device to a defined destination.</p>
+<p>The mocked data contains information to help trace the path to all loopback IP addresses, where the loopback addresses correspond to the router's name number. For example, device <code>r01</code> has the IP address <code>10.0.0.1</code>, and <code>r10</code> has <code>10.0.0.10</code>. To determine the next hop for <code>10.0.0.10</code>, use the command <code>show ip route 10.0.0.10/32 | json</code>.</p>
+<p>Note that multiple paths may exist, so the returned paths should be a list of lists, each containing <code>ConnectionItem</code> objects, along with the corresponding <code>AggregatedResult</code>. For better clarity, the <code>AggregatedResult</code> should not only include the results of the final Nornir run, but also capture the results of previous runs in the process.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">ipaddress</span> <span class="kn">import</span> <span class="n">IPv4Interface</span>
+
+<span class="kn">from</span> <span class="nn">nornir.core</span> <span class="kn">import</span> <span class="n">Nornir</span>
+<span class="kn">from</span> <span class="nn">nornir.core.task</span> <span class="kn">import</span> <span class="n">Task</span><span class="p">,</span> <span class="n">Result</span><span class="p">,</span> <span class="n">AggregatedResult</span>
+<span class="kn">from</span> <span class="nn">nornir_napalm.plugins.tasks</span> <span class="kn">import</span> <span class="n">napalm_get</span><span class="p">,</span> <span class="n">napalm_cli</span>
+
+<span class="kn">from</span> <span class="nn">mtu_tool.models.itms</span> <span class="kn">import</span> <span class="n">ConnectionItem</span>
+
+
+
+<span class="k">def</span> <span class="nf">path</span><span class="p">(</span>
+    <span class="n">nr</span><span class="p">:</span> <span class="n">Nornir</span><span class="p">,</span>
+    <span class="n">hostname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">destination</span><span class="p">:</span> <span class="n">IPv4Interface</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ConnectionItem</span><span class="p">]],</span> <span class="n">AggregatedResult</span><span class="p">]:</span>
+
+    <span class="c1"># TODO</span>
+
+    <span class="k">return</span> <span class="n">paths</span><span class="p">,</span> <span class="n">path_result</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">nornir_rich.functions</span> <span class="kn">import</span> <span class="n">print_result</span>
+    <span class="kn">from</span> <span class="nn">mtu_tool.helpers</span> <span class="kn">import</span> <span class="n">init_nornir</span>
+
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">init_nornir</span><span class="p">()</span>
+
+    <span class="n">paths</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">path</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="s2">&quot;r01&quot;</span><span class="p">,</span> <span class="s2">&quot;10.0.0.10/32&quot;</span><span class="p">)</span>
+    <span class="n">print_result</span><span class="p">(</span>
+        <span class="n">result</span><span class="p">,</span>
+        <span class="c1"># severity_level=logging.DEBUG,</span>
+    <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">paths</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;=&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">16</span><span class="si">}</span><span class="s2"> Path </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;=&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">16</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">step</span><span class="o">.</span><span class="n">local_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">step</span><span class="o">.</span><span class="n">local_interface</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">step</span><span class="o">.</span><span class="n">local_mtu</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">step</span><span class="o">.</span><span class="n">neighbor_mtu</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">step</span><span class="o">.</span><span class="n">neighbor_interface</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">step</span><span class="o">.</span><span class="n">neighbor_name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    mtu-tool-py3.10ins@ubuntu-L:~/mtu_tool$ python mtu_tool/procedure/path.py</span>
+<span class="sd">    ================ Path 0 ================</span>
+<span class="sd">    r01 Ethernet1 1500 -&gt; 1500 Ethernet1 r02</span>
+<span class="sd">    r02 Ethernet4 1500 -&gt; 1500 Ethernet1 r04</span>
+<span class="sd">    r04 Ethernet5 1500 -&gt; 1500 Ethernet1 r06</span>
+<span class="sd">    r06 Ethernet2 1500 -&gt; 1500 Ethernet1 r08</span>
+<span class="sd">    r08 Ethernet4 1500 -&gt; 1500 Ethernet1 r10</span>
+<span class="sd">    ================ Path 1 ================</span>
+<span class="sd">    r01 Ethernet1 1500 -&gt; 1500 Ethernet1 r02</span>
+<span class="sd">    r02 Ethernet4 1500 -&gt; 1500 Ethernet1 r04</span>
+<span class="sd">    ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+<details class="example">
+<summary>One possible solution</summary>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">ipaddress</span> <span class="kn">import</span> <span class="n">IPv4Interface</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+
+<span class="kn">from</span> <span class="nn">nornir.core</span> <span class="kn">import</span> <span class="n">Nornir</span>
+<span class="kn">from</span> <span class="nn">nornir.core.task</span> <span class="kn">import</span> <span class="n">Task</span><span class="p">,</span> <span class="n">Result</span><span class="p">,</span> <span class="n">AggregatedResult</span>
+<span class="kn">from</span> <span class="nn">nornir_napalm.plugins.tasks</span> <span class="kn">import</span> <span class="n">napalm_get</span><span class="p">,</span> <span class="n">napalm_cli</span>
+
+<span class="kn">from</span> <span class="nn">mtu_tool.models.itms</span> <span class="kn">import</span> <span class="n">ConnectionItem</span>
+<span class="kn">from</span> <span class="nn">mtu_tool.models.show_route</span> <span class="kn">import</span> <span class="n">Model</span> <span class="k">as</span> <span class="n">RouteModel</span>
+
+<span class="kn">from</span> <span class="nn">mtu_tool.exceptions</span> <span class="kn">import</span> <span class="n">PathProcedureError</span><span class="p">,</span> <span class="n">NoHostFoundException</span>
+
+
+<span class="c1"># Use a cash to interact only once with a device/mock</span>
+<span class="n">CACHE</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Result</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<span class="k">def</span> <span class="nf">get_next_hop</span><span class="p">(</span><span class="n">task</span><span class="p">:</span> <span class="n">Task</span><span class="p">,</span> <span class="n">destination</span><span class="p">:</span> <span class="n">IPv4Interface</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Result</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">cached</span> <span class="o">:=</span> <span class="n">CACHE</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">cached</span>
+
+    <span class="n">show_cmd</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;show ip route </span><span class="si">{</span><span class="n">destination</span><span class="si">}</span><span class="s2"> | json&quot;</span>
+    <span class="n">result_cli</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">task</span><span class="o">=</span><span class="n">napalm_cli</span><span class="p">,</span>
+        <span class="n">commands</span><span class="o">=</span><span class="p">[</span><span class="n">show_cmd</span><span class="p">],</span>
+        <span class="n">severity_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">result_getters</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">task</span><span class="o">=</span><span class="n">napalm_get</span><span class="p">,</span>
+        <span class="n">getters</span><span class="o">=</span><span class="p">[</span>
+            <span class="s2">&quot;get_lldp_neighbors&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;get_interfaces&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="n">severity_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># The CLI command returns a JSON string, use Pydantic Model</span>
+    <span class="n">show_routes</span> <span class="o">=</span> <span class="n">RouteModel</span><span class="o">.</span><span class="n">model_validate_json</span><span class="p">(</span><span class="n">result_cli</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="n">show_cmd</span><span class="p">])</span>
+
+    <span class="c1"># default VRF hardcoded for now</span>
+    <span class="n">routes</span> <span class="o">=</span> <span class="n">show_routes</span><span class="o">.</span><span class="n">vrfs</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">routes</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">routes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;No route found&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Collect &quot;interface: mtu&quot; mapping</span>
+    <span class="n">interface_mtus</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;mtu&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">result_getters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;get_interfaces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="n">next_hopes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">routes</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">destination</span><span class="p">)]</span><span class="o">.</span><span class="n">directlyConnected</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">via</span> <span class="ow">in</span> <span class="n">routes</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">destination</span><span class="p">)]</span><span class="o">.</span><span class="n">vias</span><span class="p">:</span>
+            <span class="n">interface_data</span> <span class="o">=</span> <span class="n">result_getters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;get_interfaces&quot;</span><span class="p">][</span><span class="n">via</span><span class="o">.</span><span class="n">interface</span><span class="p">]</span>
+            <span class="n">lldp_data</span> <span class="o">=</span> <span class="n">result_getters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;get_lldp_neighbors&quot;</span><span class="p">][</span><span class="n">via</span><span class="o">.</span><span class="n">interface</span><span class="p">]</span>
+            <span class="c1"># For now we just take the first lldp neighbor. Feel free to improve</span>
+            <span class="c1"># If DNS PTR works for all p2p links, we could use it to get the next hop host</span>
+            <span class="n">next_hopes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">ConnectionItem</span><span class="p">(</span>
+                    <span class="n">local_name</span><span class="o">=</span><span class="n">task</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="n">local_interface</span><span class="o">=</span><span class="n">via</span><span class="o">.</span><span class="n">interface</span><span class="p">,</span>
+                    <span class="n">local_mtu</span><span class="o">=</span><span class="n">interface_data</span><span class="p">[</span><span class="s2">&quot;mtu&quot;</span><span class="p">],</span>
+                    <span class="n">neighbor_name</span><span class="o">=</span><span class="n">lldp_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;hostname&quot;</span><span class="p">],</span>
+                    <span class="n">neighbor_interface</span><span class="o">=</span><span class="n">lldp_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;port&quot;</span><span class="p">],</span>
+                    <span class="c1"># The remote MTU needs to be updated in the recursion</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+    <span class="n">result_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;next_hops&quot;</span><span class="p">:</span> <span class="n">next_hopes</span><span class="p">,</span>
+        <span class="s2">&quot;interface_mtus&quot;</span><span class="p">:</span> <span class="n">interface_mtus</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">task</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="n">result_data</span><span class="p">)</span>
+    <span class="n">CACHE</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">host</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">path</span><span class="p">(</span>
+    <span class="n">nr</span><span class="p">:</span> <span class="n">Nornir</span><span class="p">,</span>
+    <span class="n">hostname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">destination</span><span class="p">:</span> <span class="n">IPv4Interface</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ConnectionItem</span><span class="p">]],</span> <span class="n">AggregatedResult</span><span class="p">]:</span>
+
+    <span class="n">nr_host</span> <span class="o">=</span> <span class="n">nr</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">hostname</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nr_host</span><span class="o">.</span><span class="n">inventory</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">NoHostFoundException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Host </span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s2"> not found in inventory&quot;</span><span class="p">)</span>
+
+    <span class="n">path_result</span> <span class="o">=</span> <span class="n">AggregatedResult</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">)</span>
+
+    <span class="n">path</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ConnectionItem</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># first path list</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span><span class="p">]</span>  <span class="c1"># list of all existing paths</span>
+
+    <span class="k">def</span> <span class="nf">split_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generator that first yields the original list and then yields copies of the list passed as an argument. Each copy is added to the &#39;paths&#39; collection.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        path (list): The original list to be yielded and copied.</span>
+
+<span class="sd">        Yields:</span>
+<span class="sd">        list: The original list.</span>
+
+<span class="sd">        Yields:</span>
+<span class="sd">        list: Copies of the original list.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path_copy</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">path</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">new_path</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">path_copy</span><span class="p">)</span>
+            <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_path</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">new_path</span>
+
+    <span class="k">def</span> <span class="nf">walk_path</span><span class="p">(</span>
+        <span class="n">hostname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">interface</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">aggregated_result</span><span class="p">:</span> <span class="n">AggregatedResult</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+
+        <span class="n">nr_host</span> <span class="o">=</span> <span class="n">nr</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">hostname</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">nr_host</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="n">task</span><span class="o">=</span><span class="n">get_next_hop</span><span class="p">,</span>
+            <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">hostname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">aggregated_result</span><span class="p">:</span>
+            <span class="c1"># If hostname is already in aggregated_result we are working with a cashed result</span>
+            <span class="n">aggregated_result</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="n">next_hops</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ConnectionItem</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="n">hostname</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;next_hops&quot;</span><span class="p">]</span>
+        <span class="n">interface_mtus</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="n">hostname</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;interface_mtus&quot;</span><span class="p">]</span>
+
+        <span class="c1"># generator copies the path and adds it to the paths list if multiple paths exist</span>
+        <span class="n">split_path_generator</span> <span class="o">=</span> <span class="n">split_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">nh</span> <span class="ow">in</span> <span class="n">next_hops</span><span class="p">:</span>
+            <span class="n">passed_path</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">split_path_generator</span><span class="p">)</span>
+            <span class="c1"># Add next hop information to the list to have the right order and beeing able to copy the path</span>
+            <span class="n">passed_path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nh</span><span class="p">)</span>
+            <span class="n">remote_mtu</span> <span class="o">=</span> <span class="n">walk_path</span><span class="p">(</span>
+                <span class="n">nh</span><span class="o">.</span><span class="n">neighbor_name</span><span class="p">,</span>
+                <span class="n">nh</span><span class="o">.</span><span class="n">neighbor_interface</span><span class="p">,</span>
+                <span class="n">passed_path</span><span class="p">,</span>
+                <span class="n">aggregated_result</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="c1"># walk_path returns the MTU uf the remote and the next hop information added to the list can be updated now</span>
+            <span class="n">nh</span><span class="o">.</span><span class="n">neighbor_mtu</span> <span class="o">=</span> <span class="n">remote_mtu</span>
+
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">interface_mtus</span><span class="p">[</span><span class="n">interface</span><span class="p">])</span>
+
+    <span class="c1"># Start recursion</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">walk_path</span><span class="p">(</span>
+            <span class="n">hostname</span><span class="o">=</span><span class="n">hostname</span><span class="p">,</span>
+            <span class="n">interface</span><span class="o">=</span><span class="s2">&quot;Loopback0&quot;</span><span class="p">,</span>
+            <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+            <span class="n">aggregated_result</span><span class="o">=</span><span class="n">path_result</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">PathProcedureError</span><span class="p">(</span>
+            <span class="s2">&quot;Most likely a job failed and did return an exception and not a dict&quot;</span><span class="p">,</span>
+            <span class="n">path_result</span><span class="p">,</span>
+        <span class="p">)</span> <span class="kn">from</span> <span class="nn">exc</span>
+    <span class="k">return</span> <span class="n">paths</span><span class="p">,</span> <span class="n">path_result</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">nornir_rich.functions</span> <span class="kn">import</span> <span class="n">print_result</span>
+    <span class="kn">from</span> <span class="nn">mtu_tool.helpers</span> <span class="kn">import</span> <span class="n">init_nornir</span>
+
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">init_nornir</span><span class="p">()</span>
+
+    <span class="n">paths</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">path</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="s2">&quot;r01&quot;</span><span class="p">,</span> <span class="s2">&quot;10.0.0.10/32&quot;</span><span class="p">)</span>
+    <span class="n">print_result</span><span class="p">(</span>
+        <span class="n">result</span><span class="p">,</span>
+        <span class="c1"># severity_level=logging.DEBUG,</span>
+    <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">paths</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;=&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">16</span><span class="si">}</span><span class="s2"> Path </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;=&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">16</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">step</span><span class="o">.</span><span class="n">local_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">step</span><span class="o">.</span><span class="n">local_interface</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">step</span><span class="o">.</span><span class="n">local_mtu</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">step</span><span class="o">.</span><span class="n">neighbor_mtu</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">step</span><span class="o">.</span><span class="n">neighbor_interface</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">step</span><span class="o">.</span><span class="n">neighbor_name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    mtu-tool-py3.10ins@ubuntu-L:~/mtu_tool$ python mtu_tool/procedure/path.py</span>
+<span class="sd">    ================ Path 0 ================</span>
+<span class="sd">    r01 Ethernet1 1500 -&gt; 1500 Ethernet1 r02</span>
+<span class="sd">    r02 Ethernet4 1500 -&gt; 1500 Ethernet1 r04</span>
+<span class="sd">    r04 Ethernet5 1500 -&gt; 1500 Ethernet1 r06</span>
+<span class="sd">    r06 Ethernet2 1500 -&gt; 1500 Ethernet1 r08</span>
+<span class="sd">    r08 Ethernet4 1500 -&gt; 1500 Ethernet1 r10</span>
+<span class="sd">    ================ Path 1 ================</span>
+<span class="sd">    r01 Ethernet1 1500 -&gt; 1500 Ethernet1 r02</span>
+<span class="sd">    r02 Ethernet4 1500 -&gt; 1500 Ethernet1 r04</span>
+<span class="sd">    ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+</details>
+<h2 id="links">Links:</h2>
+<ul>
+<li><a href="https://github.com/nornir-automation/nornir_napalm">nornir_napalm</a></li>
+<li><a href="https://github.com/ktbyers/nornir_netmiko">nornir_netmiko</a></li>
+<li><a href="https://github.com/scrapli/nornir_scrapli">nornir_scrapli</a></li>
+<li><a href="https://github.com/h4ndzdatm0ld/nornir_netconf">nornir_netconf</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>
